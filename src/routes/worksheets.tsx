@@ -97,10 +97,30 @@ function WorksheetPage() {
               recordEvent({ kind: "worksheet", lang, words: set.words.length });
               window.print();
             }}
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-warm"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-warm hover:scale-105 transition-transform"
           >
             <Printer className="size-4" /> Print
           </button>
+        </div>
+
+        {/* Quick Lesson Selector Pills (10 Lessons) */}
+        <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+          <span className="text-xs font-bold text-muted-foreground shrink-0 uppercase tracking-wider">
+            10 NIPUN Lessons:
+          </span>
+          {SAMPLE_LESSONS.map((l, idx) => (
+            <button
+              key={l.id}
+              onClick={() => setLessonId(l.id)}
+              className={`shrink-0 rounded-xl border px-3 py-1.5 text-xs font-bold transition-all shadow-xs ${
+                lessonId === l.id
+                  ? "border-primary bg-primary text-primary-foreground shadow-sm scale-105"
+                  : "border-border bg-card text-foreground hover:bg-secondary"
+              }`}
+            >
+              L{idx + 1}: {l.title.replace(/^पाठ \d+ — /, "")}
+            </button>
+          ))}
         </div>
       </header>
 
@@ -127,7 +147,7 @@ function WorksheetPage() {
                   <p className="text-xs font-semibold italic">{g.roman}</p>
                   <button
                     onClick={() => speak(g.roman, meta.ttsLocale)}
-                    className="no-print mx-auto mt-2 inline-flex items-center gap-1 rounded-lg bg-primary px-2.5 py-1 text-xs font-bold text-primary-foreground"
+                    className="no-print mx-auto mt-2 inline-flex items-center gap-1 rounded-lg bg-primary px-2.5 py-1 text-xs font-bold text-primary-foreground hover:scale-105 transition-transform"
                   >
                     <Volume2 className="size-3" /> Listen
                   </button>
@@ -148,7 +168,7 @@ function WorksheetPage() {
                 Worksheet — {set.labelEn} ({set.label})
               </h2>
               <p className="text-sm text-muted-foreground">
-                Languages: Hindi + {meta.name} ({meta.script})
+                Languages: Hindi + {meta.name} ({meta.script}) • {lesson.titleEn}
               </p>
             </div>
             <div className="text-right text-sm">
@@ -156,7 +176,7 @@ function WorksheetPage() {
               <p className="mt-1">Class: ________ Date: __________</p>
             </div>
           </div>
-          <p className="mt-3 text-xs font-semibold text-primary">{lesson.outcomeEn}</p>
+          <p className="mt-3 text-xs font-bold text-primary bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-lg inline-block">{lesson.outcomeEn}</p>
 
           <Block n="1" title="Match — join each Hindi word to its mother-tongue word">
             <div className="grid grid-cols-2 gap-8">
@@ -198,10 +218,18 @@ function WorksheetPage() {
               {lesson.lines.map((line) => {
                 const out = translate(line, lang);
                 return (
-                  <li key={line} className="rounded-xl bg-sand p-3">
-                    <p className="text-base">{line}</p>
-                    <p className="font-tribal text-lg text-indigo-deep">{out.native}</p>
-                    <p className="text-sm italic">{out.roman}</p>
+                  <li key={line} className="rounded-xl bg-sand p-3 flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-base font-bold text-foreground">{line}</p>
+                      <p className="font-tribal text-lg text-indigo-deep">{out.native}</p>
+                      <p className="text-sm italic text-muted-foreground">{out.roman}</p>
+                    </div>
+                    <button
+                      onClick={() => speak(out.roman, meta.ttsLocale)}
+                      className="no-print inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary/15 text-primary hover:bg-primary hover:text-white px-3 py-1.5 text-xs font-bold transition-all shadow-xs"
+                    >
+                      <Volume2 className="size-3.5" /> Speak
+                    </button>
                   </li>
                 );
               })}
