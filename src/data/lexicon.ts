@@ -404,6 +404,58 @@ const EXTRA_LEXICON: Record<string, Entry> = {
   सर: q("guruji", "guruji", "guruji"),
   मैडम: q("guruji", "guruji", "guruji"),
   टीचर: q("guruji", "guruji", "guruji"),
+
+  // Seasons, Weather & Nature
+  मौसम: q("din-kalom", "din-kalom", "din-kalom"),
+  तेज: q("ludhur", "ludhur", "ludhur"),
+  चमका: q("bhati-yena", "julum-yena", "julum-yena"),
+  काले: q("hende", "hende", "hende"),
+  बादल: q("rimil", "rimil", "rimil"),
+  "छप छप": q("chap chap", "chap chap", "chap chap"),
+
+  // Helpers, Community & Village
+  किसान: q("chasa", "chasa", "chasa"),
+  खेत: q("khet", "khet", "khet"),
+  पाठशाला: q("itun-asra", "iskul", "iskul"),
+  पढ़ाते: q("parhaoa", "parhaowa", "parhaowa"),
+  मददगार: q("gorho-ij", "gora-ij", "gora-ij"),
+  समुदाय: q("horko", "hoko", "hoko"),
+
+  // Cleanliness & Health
+  रोज: q("din-hilok", "din-hilang", "din-hilang"),
+  धोना: q("abuk", "abug", "abug"),
+  धो: q("abuk me", "abug me", "abug me"),
+  धोओ: q("abuk me", "abug me", "abug me"),
+  स्वच्छ: q("sapha", "sapha", "sapha"),
+  स्वस्थ: q("bes", "bugin", "bugin"),
+
+  // Colors, Shapes & Art
+  पत्ता: q("sakam", "sakam", "sakam"),
+  पीला: q("sasang", "sasang", "sasang"),
+  नीला: q("lile", "lili", "lili"),
+  गोल: q("gol", "gol", "gol"),
+  चौकोर: q("char-kuna", "char-kuna", "char-kuna"),
+  खिड़की: q("khirki", "khirki", "khirki"),
+  चित्र: q("chitar", "chitar", "chitar"),
+  बनाओ: q("benao me", "bai me", "bai me"),
+  भरो: q("perec me", "peree me", "peree me"),
+
+  // Forests, Rivers & Earth
+  जंगल: q("bir", "bir", "bir"),
+  ठंडा: q("rear", "rear", "rear"),
+  लगाओ: q("rohe me", "rohe me", "rohe me"),
+  बचाओ: q("banchao me", "banchao me", "banchao me"),
+  धरती: q("dharti", "dharti", "dharti"),
+  प्रकृति: q("sirjon", "sirjon", "sirjon"),
+
+  // Folk Tales & Rhymes
+  मीठा: q("sibil", "sibil", "sibil"),
+  पहेली: q("kudum", "kudum", "kudum"),
+  पहेलियाँ: q("kudumko", "kudumko", "kudumko"),
+  बुझो: q("bujhau me", "bujhau me", "bujhau me"),
+  मातृभाषा: q("ayobhasha", "ayobhasha", "ayobhasha"),
+  रानी: q("rani", "rani", "rani"),
+  राजा: q("raja", "raja", "raja"),
 };
 
 Object.assign(LEXICON, EXTRA_LEXICON);
@@ -675,6 +727,54 @@ export const SAMPLE_LESSONS = [
     outcome: "NIPUN Bharat • संवाद, प्रश्नोत्तरी और आत्मविश्वास (ओ.एल.-1.7)",
     outcomeEn: "NIPUN Bharat • Inquisitive dialogue & confidence (OL-1.7)",
     lines: ["तुम कैसे हो", "मैं ठीक हूँ", "तुमने आज क्या सीखा", "शाबाश बहुत अच्छा"],
+  },
+  {
+    id: "fln-l11",
+    title: "पाठ 11 — ऋतुएँ, मौसम और बारिश",
+    titleEn: "Lesson 11 — Seasons, Weather & Rain",
+    outcome: "NIPUN Bharat • पर्यावरण एवं ऋतु ज्ञान (ई.वी.एस.-1.3)",
+    outcomeEn: "NIPUN Bharat • Weather, seasons & nature cycles (EVS-1.3)",
+    lines: ["सूरज बहुत तेज चमका", "काले बादल आए", "बारिश का मौसम आया", "पानी में छप छप"],
+  },
+  {
+    id: "fln-l12",
+    title: "पाठ 12 — हमारे मददगार और समुदाय",
+    titleEn: "Lesson 12 — Community Helpers & Village",
+    outcome: "NIPUN Bharat • सामाजिक एवं सामुदायिक समझ (ओ.एल.-1.8)",
+    outcomeEn: "NIPUN Bharat • Social helpers & village life (OL-1.8)",
+    lines: ["किसान खेत में काम करता है", "गुरुजी पाठशाला में पढ़ाते हैं", "सब मिलकर काम करो", "हमारा सुंदर गाँव"],
+  },
+  {
+    id: "fln-l13",
+    title: "पाठ 13 — शरीर की स्वच्छता और सफाई",
+    titleEn: "Lesson 13 — Personal Hygiene & Cleanliness",
+    outcome: "NIPUN Bharat • व्यक्तिगत स्वच्छता और स्वास्थ्य (एच.-1.2)",
+    outcomeEn: "NIPUN Bharat • Personal cleanliness & wellbeing (H-1.2)",
+    lines: ["रोज सुबह हाथ धोना", "दाँत साफ करो", "साफ पानी पियो", "स्वच्छ रहो स्वस्थ रहो"],
+  },
+  {
+    id: "fln-l14",
+    title: "पाठ 14 — रंग, आकृतियाँ और चित्रकला",
+    titleEn: "Lesson 14 — Colors, Shapes & Drawing",
+    outcome: "NIPUN Bharat • रचनात्मक कला एवं दृश्य पहचान (सी.ए.-1.1)",
+    outcomeEn: "NIPUN Bharat • Creative art & visual recognition (CA-1.1)",
+    lines: ["लाल फूल और हरा पत्ता", "गोल सूरज चौकोर खिड़की", "सुंदर चित्र बनाओ", "रंग भरो और खुश हो"],
+  },
+  {
+    id: "fln-l15",
+    title: "पाठ 15 — जंगल, नदियाँ और हमारी धरती",
+    titleEn: "Lesson 15 — Forests, Rivers & Native Earth",
+    outcome: "NIPUN Bharat • प्रकृति संरक्षण और स्थानीय विरासत (ई.वी.एस.-1.4)",
+    outcomeEn: "NIPUN Bharat • Ecology, rivers & tribal heritage (EVS-1.4)",
+    lines: ["हरा-भरा जंगल और ऊँचे पहाड़", "नदी का ठंडा पानी", "पेड़ लगाओ धरती बचाओ", "प्रकृति हमारी माँ है"],
+  },
+  {
+    id: "fln-l16",
+    title: "पाठ 16 — लोकगीत, पहेलियाँ और बाल कहानी",
+    titleEn: "Lesson 16 — Folk Rhymes, Riddles & Stories",
+    outcome: "NIPUN Bharat • मौखिक अभिव्यक्ति और लोक साहित्य (ओ.एल.-1.9)",
+    outcomeEn: "NIPUN Bharat • Folk storytelling & cultural memory (OL-1.9)",
+    lines: ["एक जंगल में एक चिड़िया", "मीठा गीत सुनाओ", "पहेली बुझो और बताओ", "जोहार हमारी मातृभाषा"],
   },
 ];
 
