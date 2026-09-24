@@ -6,7 +6,12 @@
 [![React 19](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![100% Offline](https://img.shields.io/badge/Edge_AI-100%25_Offline-emerald?style=for-the-badge)](https://github.com)
+[![Vercel Deployed](https://img.shields.io/badge/Live_Deployed-bhasha--in--setu.vercel.app-000000?style=for-the-badge&logo=vercel)](https://bhasha-in-setu.vercel.app/)
 [![Lovable](https://img.shields.io/badge/Built_with-Lovable-ff5722?style=for-the-badge)](https://lovable.dev)
+
+> 🚀 **Live Production Deployment URL:**  
+> 👉 **[https://bhasha-in-setu.vercel.app/](https://bhasha-in-setu.vercel.app/)**  
+> *Click above to access the full live application running globally on Vercel Edge with zero install.*
 
 ---
 
@@ -22,61 +27,134 @@ In rural and tribal belt schools across Jharkhand (such as Santhal Pargana, West
 
 ---
 
-## 🏗️ 2. Technology Stack & End-to-End System Architecture
+## ⚙️ 2. Technical Approach & System Flow (SIH 2026 Format)
 
-Bhasha Setu is designed with a **Decoupled Edge-First Full-Stack Architecture**. Because tribal primary schools in Jharkhand are located in off-grid rural forest areas with zero internet connectivity, the application separates the build-time and server-side capabilities from an autonomous, client-side embedded AI and database engine.
+Inspired by the **Smart India Hackathon (SIH) Technical Architecture standard**, Bhasha Setu is architected with a complete end-to-end operational pipeline connecting all 4 primary stakeholders through an **Autonomous, 100% Offline Edge-AI Pipeline**.
 
 ---
 
-### 🏛️ Complete System Architecture Diagram
+### 🗺️ System Flow Diagram (SIH Technical Approach)
 
 ```mermaid
 flowchart TB
-    subgraph PresentationTier ["1. Frontend Presentation Layer (Client / Tablet)"]
-        UI["React 19 + TypeScript (Strict Type Safety)"]
-        Styling["Tailwind CSS v4 + Oklch Design Tokens"]
-        A3D["Aceternity 3D Engine (3D Pin Holograms, Tilt Cards, Bento Grid)"]
-        Sensors["Web APIs (Microphone Stream, Camera Canvas, AudioContext)"]
+    %% Stakeholder Personas
+    subgraph PERSONAS ["👥 USER PERSONAS"]
+        P_Teacher["👨‍🏫 TEACHER<br/>(Hindi-Speaking Primary Teacher)"]
+        P_Student["👦👧 TRIBAL STUDENTS<br/>(Santhali / Ho / Mundari Learners)"]
+        P_Headmaster["🏫 HEADMASTER / ANGANWADI<br/>(School Content Manager)"]
+        P_Admin["🏛️ STATE ADMIN<br/>(NIPUN Bharat & MTB-MLE Directorate)"]
     end
 
-    subgraph EdgeAITier ["2. Edge Intelligence & AI Processing Engine (100% Offline)"]
-        Norm["Hinglish Normalizer & Phonetic Cleaner"]
-        NLP["Linguistic Tokenizer & POS Disambiguation Engine"]
-        Grammar["Compound Idioms & Tribal Grammar Inflection Engine"]
-        OCR["Tesseract.js WASM Engine (Offline Blackboard Vision)"]
-        TTS["Web Speech Synthesis + IPA Phonetic Audio Synthesizer"]
+    %% Access & Authentication Layer
+    subgraph ACCESS ["📱 ACCESS & HARDWARE TIER (Zero-Internet)"]
+        Dev["Low-Cost Android Tablet (2 GB RAM, Android 9+) / Classroom PC"]
+        Sensors["Sensory Inputs: Microphone Stream + Blackboard Camera + Touchscreen"]
+        PWA["PWA Edge Engine: Offline Service Worker + App Manifest"]
     end
 
-    subgraph BackendTier ["3. Backend & Server Runtime Layer"]
-        Nitro["Nitro Engine / Vinxi (Node.js & Edge Runtime)"]
-        Routing["TanStack Start Full-Stack Routing & SSR/Hydration"]
-        ServerFn["TanStack Server Functions (Zero-API RPC Layer)"]
-        Bundler["Vite 8 + Rolldown Fast Module Bundler"]
+    %% Role-Based Router
+    subgraph ROUTER ["🔀 ROLE-BASED APPLICATION GATEWAY"]
+        Gate{"Select Persona Mode"}
     end
 
-    subgraph DataTier ["4. Database & Storage Architecture (Zero-Cloud Persistence)"]
-        IDB[("IndexedDB (Structured Offline Document Database)<br/>• Printable Worksheets<br/>• FLN Student Progress Logs<br/>• Session History")]
-        LStore[("LocalStorage Engine<br/>• Active Dialect State (palash.lang)<br/>• UI Audio Settings<br/>• Device Telemetry")]
-        LexiconDB[("In-Memory Lexical Trie & Graph Database<br/>• 1000+ Tribal Lemmata (Santhali, Ho, Mundari)<br/>• Unicode Ol Chiki & Warang Citi Maps<br/>• NIPUN Bharat FLN Vocab Tree")]
+    %% Core System Portals
+    subgraph TEACHER_PORTAL ["🎙️ TEACHER PORTAL (Live Dialogue & Classroom Vision)"]
+        T_Mic["Live Voice Input (Hindi Oral Instructions)"]
+        T_Norm["Hinglish Normalizer & Phonetic Cleaner"]
+        T_Beam["Animated Beam Synthesis (<3 ms Latency)"]
+        T_TTS["Local Speech Synthesizer (Native Mother-Tongue Audio)"]
+        
+        T_Cam["Camera OCR Capture (Blackboard & Textbook Notes)"]
+        T_OCR["Tesseract.js WASM Engine (Offline Vision Worker)"]
+        T_Dual["Instant Dual-Script Gloss (Ol Chiki / Warang Citi / Devanagari)"]
     end
 
-    Sensors --> Norm
-    UI --> A3D
-    UI --> Styling
-    Norm --> NLP
-    NLP --> Grammar
-    Grammar --> LexiconDB
-    Grammar --> TTS
-    Sensors --> OCR
-    OCR --> NLP
+    subgraph STUDENT_PORTAL ["🎨 STUDENT STUDIO (Foundational Learning & Practice)"]
+        S_Holo["3D Holographic Script Showcase & Acoustic Beacon"]
+        S_Sheet["Bilingual Worksheets (Matching, Tracing, Fill-in-Blanks)"]
+        S_Cards["Visual Flashcards (10 Thematic Sets with Audio)"]
+        S_Print["1-Click Print & PDF Sheet Exporter"]
+    end
 
-    PresentationTier <--> Routing
-    Routing <--> Nitro
-    Nitro <--> ServerFn
+    subgraph OFFLINE_CORE ["💾 LOCAL DATABASE & EDGE AI CORE (100% On-Device)"]
+        L_IDB[("IndexedDB Document Store<br/>• 16 NIPUN Bharat Lessons<br/>• Student Session Logs<br/>• Offline Cache")]
+        L_Store[("LocalStorage Cache<br/>• Active Dialect (sat/hoc/unr)<br/>• Term Download Packs")]
+        L_Trie[("In-Memory Lexicon Graph<br/>• 1000+ Tribal Lemmata<br/>• Unicode Script Mappings")]
+    end
 
-    PresentationTier <--> IDB
-    PresentationTier <--> LStore
+    subgraph ADMIN_PORTAL ["📊 STATE ADMIN COMMAND CENTER (FLN & MTB-MLE)"]
+        A_Dash["District-Wise FLN Retention Analytics"]
+        A_Heatmap["Jharkhand Tribal Dialect Coverage Heatmap (Dumka, Chaibasa, Khunti)"]
+        A_Report["MTB-MLE Policy Compliance & CSV/Excel Export"]
+    end
+
+    %% Connecting Pipelines
+    P_Teacher --> Dev
+    P_Student --> Dev
+    P_Headmaster --> Dev
+    P_Admin --> Dev
+
+    Dev --> Sensors
+    Sensors --> PWA
+    PWA --> Gate
+
+    Gate -->|Teacher Mode| T_Mic
+    Gate -->|Teacher Mode| T_Cam
+    Gate -->|Student Mode| S_Holo
+    Gate -->|Admin Mode| A_Dash
+
+    %% Teacher Processing
+    T_Mic --> T_Norm
+    T_Norm --> T_Beam
+    T_Beam --> L_Trie
+    L_Trie --> T_TTS
+    T_TTS -->|Speaker Audio| P_Student
+
+    T_Cam --> T_OCR
+    T_OCR --> T_Dual
+    T_Dual --> L_Trie
+
+    %% Student Processing
+    S_Holo --> S_Cards
+    S_Cards --> S_Sheet
+    S_Sheet --> S_Print
+
+    %% Data Sync (Local)
+    T_TTS -.->|Log Activity| L_IDB
+    S_Sheet -.->|Record Progress| L_IDB
+    L_IDB <--> L_Store
+    L_Store <--> L_Trie
+
+    %% Admin Insights
+    L_IDB --> A_Dash
+    A_Dash --> A_Heatmap
+    A_Heatmap --> A_Report
 ```
+
+---
+
+### 📊 System Workflow Matrix by User Persona
+
+| Persona | Core Responsibility | Platform Module | Input & Processing | Output Delivered |
+|---|---|---|---|---|
+| **👨‍🏫 Teacher** *(शिक्षक)* | Delivers oral instructions & lesson plans in Hindi | `/live` & `/translate` | Speaks via tablet mic or snaps blackboard photo with camera | Real-time tribal speech (<3ms) + Ol Chiki/Warang Citi dual-script gloss |
+| **👦👧 Student** *(छात्र)* | Learns foundational FLN concepts in mother tongue | `/` & `/worksheets` | Views 3D holograms, listens to native audio, traces scripts | Instant comprehension, reduced cognitive friction, bilingual fluency |
+| **🏫 Headmaster** *(प्रधानाध्यापक)* | Manages offline school curriculum across terms | `/library` | 1-Click "Download All 16 Lessons" offline sync | Full semester content cached in local storage (~8.5 MB) with zero internet |
+| **🏛️ State Admin** *(शिक्षा विभाग)* | Tracks district-level MTB-MLE & NIPUN Bharat progress | `/progress` | Aggregated offline session logs from school tablets | Retention metrics, district coverage heatmaps, exportable FLN reports |
+
+---
+
+### 🛠️ Technical Stack Breakdown (SIH 6-Pillar Architecture)
+
+| Pillar | Category | Technologies & Tools | Purpose in Bhasha Setu |
+|:---:|---|---|---|
+| **1** | **Frontend** | • React 19 (JSX/TSX)<br/>• TypeScript 5.x<br/>• Tailwind CSS v4 (Oklch Tokens)<br/>• Vite 8 & Rolldown<br/>• Aceternity 3D & Lucide Icons | Responsive tablet UI, 3D Pin holograms, animated beam synthesis, and touch-first classroom controls |
+| **2** | **Backend & Serverless** | • TanStack Start (SSR & RPC)<br/>• Nitro Engine & Vinxi<br/>• Vercel Serverless Functions<br/>• Edge CDN Runtime | Serverless hybrid rendering, instant global edge delivery, and zero-API RPC bridge |
+| **3** | **Edge AI & NLP (100% Offline)** | • Tesseract.js WebAssembly (OCR)<br/>• Web Speech API (TTS & Speech-to-Text)<br/>• Native Orthographic Tokenizer<br/>• Unicode Ol Chiki & Warang Citi Parsers | Client-side computer vision for blackboards, instant speech-to-speech turnaround, and tribal morphology |
+| **4** | **Database & Persistence** | • IndexedDB (Document Storage)<br/>• Browser LocalStorage<br/>• In-Memory Lexical Trie & Graph | Persistent offline lesson packs, session telemetry, student FLN retention data, zero cloud bills |
+| **5** | **DevOps & Deployment** | • Vercel Edge Serverless Platform<br/>• Vercel Build Output API v3<br/>• PWA Service Worker & Manifest<br/>• Git / Lovable Continuous Sync | 1-click cloud deployment, offline caching on device, and automatic asset distribution |
+| **6** | **Hardware & Target Devices** | • 2 GB RAM Android Tablets (Android 9+)<br/>• Classroom Bluetooth Speakers<br/>• Device Cameras (5 MP+) | Compatibility with low-cost hardware distributed under Sarva Shiksha Abhiyan and Samagra Shiksha |
+| **7** | **Document & Report Tools** | • Native Browser Print API<br/>• Dynamic PDF Worksheet Generator<br/>• CSV / JSON Progress Exporters | High-resolution printable worksheets, Form-J style practice sheets, and district administration reports |
 
 ---
 
@@ -265,7 +343,8 @@ Bhasha Setu is pre-configured for **Vercel Serverless & Edge deployment** via Ta
    | **Install Command** | `npm install` |
 
 4. **Click "Deploy":**
-   - Vercel will install dependencies, compile the client and SSR Nitro bundle, and deploy to a live URL (e.g., `https://bhasha-setu.vercel.app`).
+   - Vercel will install dependencies, compile the client and SSR Nitro bundle, and deploy to your live production domain:
+     👉 **`https://bhasha-in-setu.vercel.app/`**
 
 ---
 
