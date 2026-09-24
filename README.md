@@ -231,7 +231,67 @@ Transforms the normalized root phrases into authentic indigenous writing systems
 
 ---
 
-## 🛡️ 7. Offline Resilience & Edge Performance
+## 🌐 7. Vercel Deployment Guide (वर्सेल पर डिप्लॉय करने की गाइड)
+
+Bhasha Setu is pre-configured for **Vercel Serverless & Edge deployment** via TanStack Start and Nitro's **Build Output API v3**. 
+
+### How it Works on Vercel:
+- **Static Assets:** PWA manifests, icons, CSS, and client-side JavaScript are routed directly through Vercel's global high-speed Edge CDN.
+- **Serverless SSR:** The SSR page-rendering logic and server functions compile into `.vercel/output/functions/__server.func`, running instantaneously with sub-millisecond cold starts.
+- **Configuration:** Handled automatically by the included [`vercel.json`](./vercel.json).
+
+---
+
+### 🚀 Method 1: Deploy with GitHub (Dashboard — Recommended)
+
+1. **Push your code to GitHub:**
+   ```bash
+   git add .
+   git commit -m "Configure Vercel deployment"
+   git push origin main
+   ```
+
+2. **Import into Vercel:**
+   - Go to [vercel.com/new](https://vercel.com/new) and log in with GitHub.
+   - Select your repository (`bhasha-in-setu`).
+
+3. **Configure Project Settings:**
+   | Setting | Value |
+   |---|---|
+   | **Framework Preset** | **Other** (or TanStack Start / Vite) |
+   | **Root Directory** | `./` |
+   | **Build Command** | `NITRO_PRESET=vercel vite build` *(pre-configured in `vercel.json`)* |
+   | **Output Directory** | *(Leave blank — automatically managed by `.vercel/output`)* |
+   | **Install Command** | `npm install` |
+
+4. **Click "Deploy":**
+   - Vercel will install dependencies, compile the client and SSR Nitro bundle, and deploy to a live URL (e.g., `https://bhasha-setu.vercel.app`).
+
+---
+
+### 💻 Method 2: Deploy using Vercel CLI (Command Line)
+
+You can deploy directly from your local terminal using the Vercel CLI:
+
+1. **Login and link project:**
+   ```bash
+   npx vercel
+   ```
+   - Answer the interactive prompts (Link to existing project? `No`, Project name? `bhasha-setu`, Directory? `./`).
+
+2. **Deploy directly to Production:**
+   ```bash
+   npx vercel --prod
+   ```
+
+3. **Deploy Preview / Staging:**
+   ```bash
+   npx vercel
+   ```
+
+---
+
+## 🛡️ 8. Offline Resilience & Edge Performance
 
 - **Zero Cloud Latency:** The entire translation pipeline, tokenization engine, and OCR workers run locally in the browser runtime.
 - **Low-Cost Hardware Optimized:** Tested on entry-level Android tablets (2GB RAM) commonly deployed in government primary schools.
@@ -239,6 +299,7 @@ Transforms the normalized root phrases into authentic indigenous writing systems
 
 ---
 
-## 📜 License
+## 📜 9. License
 
 This project is open-source under the MIT License, designed to foster educational equity and mother-tongue-based multilingual education (MTB-MLE) across indigenous communities.
+

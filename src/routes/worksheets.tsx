@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Printer, RefreshCw, Volume2 } from "lucide-react";
+import { Printer, RefreshCw, Sparkles, Volume2 } from "lucide-react";
 import { LangPicker } from "@/components/LangPicker";
 import { useLang } from "@/components/LangContext";
 import { translate, translateWord } from "@/lib/translate";
@@ -57,17 +57,45 @@ function WorksheetPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <header className="no-print mb-6">
-        <h1 className="text-3xl font-extrabold">Bilingual Worksheets & Flashcards</h1>
-        <p className="mt-1 text-muted-foreground">
-          Pick a topic — the worksheet is generated automatically and ready to print.
-        </p>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
+      <header className="no-print mb-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border pb-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold text-primary mb-2">
+              <Sparkles className="size-3.5" /> NIPUN Bharat FLN Teaching Suite
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-foreground">
+              Bilingual Worksheets & Flashcards
+            </h1>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Instant curriculum-aligned printables for Santhali, Ho, and Mundari classrooms.
+            </p>
+          </div>
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => setSeed((s) => s + 1)}
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-semibold hover:bg-secondary transition-colors shadow-xs cursor-pointer"
+            >
+              <RefreshCw className="size-4" /> New set
+            </button>
+            <button
+              onClick={() => {
+                recordEvent({ kind: "worksheet", lang, words: set.words.length });
+                window.print();
+              }}
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-warm hover:opacity-95 transition-all cursor-pointer"
+            >
+              <Printer className="size-4" /> Print Sheet
+            </button>
+          </div>
+        </div>
+
+        {/* Clean Filter Controls */}
+        <div className="mt-5 flex flex-wrap items-center gap-3">
           <LangPicker />
           <select
             value={setId}
             onChange={(e) => setSetId(e.target.value)}
-            className="rounded-xl border border-input bg-card px-4 py-2.5 text-sm font-semibold"
+            className="rounded-xl border border-input bg-card px-4 py-2.5 text-sm font-semibold shadow-xs focus:ring-2 focus:ring-primary focus:outline-none cursor-pointer"
           >
             {FLASHCARD_SETS.map((s) => (
               <option key={s.id} value={s.id}>
@@ -78,7 +106,7 @@ function WorksheetPage() {
           <select
             value={lessonId}
             onChange={(e) => setLessonId(e.target.value)}
-            className="rounded-xl border border-input bg-card px-4 py-2.5 text-sm font-semibold"
+            className="rounded-xl border border-input bg-card px-4 py-2.5 text-sm font-semibold shadow-xs focus:ring-2 focus:ring-primary focus:outline-none cursor-pointer"
           >
             {SAMPLE_LESSONS.map((l) => (
               <option key={l.id} value={l.id}>
@@ -86,41 +114,6 @@ function WorksheetPage() {
               </option>
             ))}
           </select>
-          <button
-            onClick={() => setSeed((s) => s + 1)}
-            className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-bold"
-          >
-            <RefreshCw className="size-4" /> New set
-          </button>
-          <button
-            onClick={() => {
-              recordEvent({ kind: "worksheet", lang, words: set.words.length });
-              window.print();
-            }}
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-warm hover:scale-105 transition-transform"
-          >
-            <Printer className="size-4" /> Print
-          </button>
-        </div>
-
-        {/* Quick Lesson Selector Pills (10 Lessons) */}
-        <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          <span className="text-xs font-bold text-muted-foreground shrink-0 uppercase tracking-wider">
-            10 NIPUN Lessons:
-          </span>
-          {SAMPLE_LESSONS.map((l, idx) => (
-            <button
-              key={l.id}
-              onClick={() => setLessonId(l.id)}
-              className={`shrink-0 rounded-xl border px-3 py-1.5 text-xs font-bold transition-all shadow-xs ${
-                lessonId === l.id
-                  ? "border-primary bg-primary text-primary-foreground shadow-sm scale-105"
-                  : "border-border bg-card text-foreground hover:bg-secondary"
-              }`}
-            >
-              L{idx + 1}: {l.title.replace(/^पाठ \d+ — /, "")}
-            </button>
-          ))}
         </div>
       </header>
 
